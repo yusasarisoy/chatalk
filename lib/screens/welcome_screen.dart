@@ -9,7 +9,36 @@ class WelcomeScreen extends StatefulWidget {
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation animation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller = AnimationController(
+      duration: Duration(seconds: 1),
+      vsync: this,
+    );
+
+    animation = CurvedAnimation(parent: controller, curve: Curves.bounceOut);
+
+    controller.forward();
+
+    controller.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    controller.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +56,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   tag: 'logo',
                   child: Container(
                     child: Image.asset('images/logo.png'),
-                    height: 60.0,
+                    height: animation.value * 100,
                   ),
                 ),
                 SizedBox(
@@ -50,7 +79,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               padding: EdgeInsets.symmetric(vertical: 16.0),
               child: Material(
                 elevation: 5.0,
-                color: Colors.lightBlueAccent,
+                color: Colors.deepPurple,
                 borderRadius: BorderRadius.circular(30.0),
                 child: MaterialButton(
                   onPressed: () {
@@ -67,7 +96,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 16.0),
               child: Material(
-                color: Colors.blueAccent,
+                color: Colors.purple,
                 borderRadius: BorderRadius.circular(30.0),
                 elevation: 5.0,
                 child: MaterialButton(

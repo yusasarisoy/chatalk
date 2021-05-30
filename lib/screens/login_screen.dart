@@ -71,7 +71,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   if (user != null) {
                     Navigator.pushNamed(context, ChatScreen.id);
                   }
-                } catch (e) {}
+                } catch (e) {
+                  print(e);
+                }
               },
             ),
           ],

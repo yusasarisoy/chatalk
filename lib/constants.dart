@@ -33,3 +33,7 @@ const kInputDecoration = InputDecoration(
     borderRadius: BorderRadius.all(Radius.circular(32.0)),
   ),
 );
+
+const kCollectionName = 'messages';
+const kTextName = 'text';
+const kSenderName = 'sender';

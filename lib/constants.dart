@@ -37,3 +37,4 @@ const kInputDecoration = InputDecoration(
 const kCollectionName = 'messages';
 const kTextName = 'text';
 const kSenderName = 'sender';
+const kTimestamp = 'createdAt';
